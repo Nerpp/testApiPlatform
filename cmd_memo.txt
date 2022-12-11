@@ -1,0 +1,64 @@
+j'installe api platform
+symfony composer req api
+
+pour voir api platform
+https://127.0.0.1:8000/api
+
+je dois configurer mon .env pour config ma base de donnée
+
+ensuite je crée la bdd
+symfony console d:b:c
+
+j'installe le maker bundle pour creer les entités plus rapidement
+composer require --dev symfony/maker-bundle
+
+je vais creer mes entités
+symfony console make:entity
+
+je pousse dans la bdd
+symfony console make:mig
+symfony console d:m:m
+
+je signale à symfony la ressource de l'api dans l'entite
+#[ApiResource]
+
+pour acceder à l'entité catégories particuliérement
+https://127.0.0.1:8000/api/categories
+
+pour tester api platform 
+postman
+
+je crée le work place
+
+Methode POST
+j'utilise la doc apiplatform pour les commandes dans body raw
+ne pas oublier dans le header de mettre 
+content-type  dans KEY
+application/ld+json dans VALUE
+
+
+
+Methode DELETE
+il y a pas de contenu donc dans body je coche none
+je passe dans l'url l'id de la ressource à supprimer
+dans le standard rest on peut pas faire plusieur REST il faut faire plusieurs appels
+
+Methode PUT 
+indispensable de rappeller toutes les valeurs
+pour replace j'indique seulement l'id en plus comme indiquer dans la doc
+pour une mise à jour dans un élément dans un élement qui n'existe pas on sort du standard REST ne pas utiliser
+
+Methode Patch
+content-type dans KEY 
+application/merge-patch+json dans VALUE
+
+
+AVEC une relation
+
+Methode Get
+Aucun changement
+
+Methode POST
+on recupére la doc
+pour la relation dans la bdd il faut lui envoyer une relation  exemple: "/api/categories/2" dans le string
+
